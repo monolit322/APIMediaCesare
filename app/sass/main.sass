@@ -1,0 +1,556 @@
+@use 'sass:math'
+@use 'sass:color'
+
+@import "fonts"
+@import "libs"
+@import "vars"
+
+*
+	-webkit-box-sizing: border-box
+	-moz-box-sizing: border-box
+	box-sizing: border-box
+	&:before, &:after
+		-webkit-box-sizing: border-box
+		-moz-box-sizing: border-box
+		box-sizing: border-box
+
+*::-webkit-input-placeholder
+	color: #666
+	opacity: 1
+
+*:-moz-placeholder
+	color: #666
+	opacity: 1
+
+*::-moz-placeholder
+	color: #666
+	opacity: 1
+
+*:-ms-input-placeholder
+	color: #666
+	opacity: 1
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+	color: #666
+body input:required:valid,
+body textarea:required:valid
+	color: #666
+
+html, body
+	height: 100%
+
+body
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.65
+	font-family: $default-font
+	overflow-x: hidden
+
+body.lock
+	overflow: hidden
+
+h1
+	font-size: 39px
+	line-height: 48px
+
+h2
+	font-size: 32px
+	line-height: 39px
+
+h3
+	font-size: 25px
+	line-height: 31px
+
+h4
+	font-size: 20px
+	line-height: 25px
+
+h5
+	font-size: 16px
+	line-height: 20px
+
+h6
+	font-size: 13px
+	line-height: 16px
+
+p
+	font-size: 16px
+	line-height: 20px
+
+small
+	font-size: 13px
+	line-height: 16px
+
+header
+	width: 100vw
+	height: 100vh
+	position: relative
+
+.mainBG
+	position: absolute
+	width: 50%
+	height: 100%
+	top: 0
+	right: 0
+	pointer-events: none
+	object-fit: cover
+
+.centralCircle
+	position: absolute
+	left: 45%
+	top: 15%
+	pointer-events: none	
+
+.button
+	border: 2px solid #000
+	border-radius: 8px
+	padding: 8px 15px
+	background-color: rgba(0, 0, 0, 0)
+
+.navigation
+	display: flex
+	justify-content: space-between
+	align-items: center
+	margin-top: 3%
+	color: #000
+	width: 100%
+
+.menu_btn
+	display: none
+	width: 30px
+	height: 30px
+	position: relative
+	z-index: 110
+	overflow: hidden
+	span
+		width: 100%
+		height: 2px
+		position: absolute
+		top: 50%
+		right: 0
+		background-color: #000
+		transition: all 0.5s
+	span
+		&:nth-of-type(2)
+			top: calc( 50% - 5px )
+	span
+		&:nth-of-type(3)
+			top: calc( 50% + 5px )
+
+.menu_btn.active
+	span
+		&:first-of-type
+			transform: translateX(-100%)
+
+.menu_btn.active
+	span
+		&:nth-of-type(2)
+			top: 50%
+			transform: rotate(45deg)
+		&:nth-of-type(3)
+			top: 50%
+			transform: rotate(-45deg)
+
+.navigation__menu.active
+	transform: translateX(0)
+
+.navigation__menu
+	display: flex
+	font-family: "LaborUnion-example", sans-serif
+	list-style-type: circle
+	li
+		color: #FF4E00
+		flex-grow: 0
+		margin-left: 25px
+		white-space: nowrap
+		a
+			color: #000
+			text-decoration: none
+			white-space: nowrap
+			&:hover
+				border-bottom: 1px solid inherit
+
+.navigation__button
+	white-space: nowrap
+
+.navigation__button__item-white
+	color: #000
+	transition: 0.5s
+	&:hover
+		background-color: #000
+		color: #fff
+
+.navigation__button__item-black
+	background-color: #000
+	color: #fff
+	transition: 0.5s
+	&:hover
+		background-color: rgba(0, 0, 0, 0)
+		color: #000
+
+.main
+	margin-top: 100px
+	font-family: "LaborUnion-example", sans-serif
+	color: #000
+
+.main__inner
+	z-index: 10
+
+.ellipse
+	z-index: 0
+	width: 618px
+	height: 284px
+	border: 1px solid #FF4E00
+	border-radius: 309px / 142px
+	position: absolute
+	top: 50%
+	left: -7%
+	transform: rotate(-38deg)
+
+.main__logo
+	width: 380px
+	height: 150px
+
+.main__title
+	font-size: 94px
+	line-height: 124%
+	white-space: nowrap
+
+.main__subtitle
+	font-size: 29px
+	line-height: 124%
+	white-space: nowrap
+
+.main__text
+	font-size: 34px
+	line-height: 124%
+	margin-top: 32px
+
+.information
+	margin-top: 75px
+
+.information__inner
+	width: 100%
+	height: 200px
+	background: rgba(255, 255, 255, 0.95)
+	z-index: 1
+	border-radius: 16px
+	display: flex
+	align-items: center
+	ul
+		width: 100%
+		list-style-type: none
+		display: flex
+		justify-content: space-around
+		span
+			display: flex
+			span
+				display: flex
+				flex-direction: column
+
+.icon
+	width: 42px
+	height: 42px
+
+.icon__description
+	margin-left: 2%
+
+.icon__title
+	font-weight: bold
+	font-size: 36px
+	line-height: 36px
+	white-space: nowrap
+
+.icon__text
+	font-size: 16px
+	white-space: nowrap
+
+.discounts
+	width: 100vw
+	height: 200px
+	background-image: url(../img/discountsBG.jpg)
+	
+.discounts__inner
+	text-transform: uppercase
+	font-size: 28px
+	line-height: 124%
+	color: #000
+	display: flex
+	align-items: center
+	height: 200px
+	span
+		color: #FF4E00
+
+.discounts__button
+	background-color: #FFA58D
+	color: #000
+	border: none
+	display: flex
+	justify-content: center
+	font-size: 16px
+	line-height: 124%
+	font-weight: 500
+	padding: 16px 32px
+	white-space: nowrap
+	transition: 0.2s
+	&:hover
+		margin-top: -5px
+		font-weight: 600
+	&:active
+		margin-top: 5px
+
+.aboutUs
+	width: 100vw
+	height: auto
+
+.aboutUs__items
+	text-align: center
+	margin-top: 32px
+
+.aboutUs__title
+	margin-top: 64px
+	text-align: center
+	span
+		color: $accent
+
+.aboutUS__subtitle
+	font-size: 38px
+	font-weight: 500
+	white-space: nowrap
+
+.aboutUS__text
+	font-size: 16px
+	margin-top: 4px
+
+.aboutUs__content
+	margin-top: 64px
+	margin-bottom: 32px
+
+.aboutUs__image
+	img
+		border-radius: 25px
+		width: 100%
+		height: auto
+
+.aboutUs__description
+	text-align: center
+	p
+		font-family: "LaborUnion-example", sans-serif
+		margin-top: 32px
+		line-height: 157%
+
+.aboutUs__description__horseshoe
+	display: block
+	margin: 0 auto
+	margin-top: 30%
+
+.aboutUs__description__arrow
+	margin-top: 32px
+
+.aboutUs__description__button
+	margin-top: 32px
+	background-color: #000
+	&:hover
+		margin-top: 30px
+		font-weight: 500
+	&:active
+		margin-top: 32px
+	a
+		color: #fff
+		text-decoration: none
+
+.stages
+	width: 100vw
+	height: auto
+
+.stages__title
+	text-align: center
+	margin-top: 32px
+	span
+		color: $accent
+
+.stages__inner
+	margin-top: 32px
+	display: flex
+
+.stages__inner-left
+	img
+		display: block
+		margin: 0 auto
+
+.stages__box
+	width: 100%
+	height: auto
+
+.stages__box__row
+	margin-top: 16px
+	width: 100%
+	display: flex
+	justify-content: space-between
+
+.stages__box__item
+	width: 42.5%
+	display: flex
+	align-items: center
+
+.stages__box_item__text
+	margin-left: 32px
+
+.stages__box__item__text__title
+	font-size: 25px
+	font-weight: 500
+	white-space: nowrap
+
+.stages__inner-right
+	height: 100%
+	img
+		width: 70%
+		height: 100%
+		border-radius: 15px
+		object-fit: cover
+		margin-right: auto
+		float: right
+
+.stages__ellipse
+	position: absolute
+	height: 377px
+	width: 321px
+	content: ''
+	background-color: #96B7D6
+	border-radius: 48%
+	margin-top: 5%
+	margin-left: 2%
+
+.stages__ellipse__inner
+	position: absolute
+	display: flex
+	flex-direction: column
+	top: 20%
+	text-align: center
+	color: #fff
+	img
+		position: relative
+		left: 35%
+		width: 96px
+		height: 96px
+
+.stages__ellipse__inner__title
+	font-size: 25px
+	font-weight: 500
+
+.reviews
+	width: 100vw
+	height: 600px
+	margin-top: 64px
+
+.reviews__title
+	text-align: center
+	margin-bottom: 32px
+	span
+		color: $accent
+
+.swiper__container
+	display: flex
+	justify-content: center
+
+.swiper
+	width: 100%
+	height: 100%
+
+.swiper-wrapper
+	width: 99%
+	height: 80%
+	border: 2px solid #CEB8A4
+	border-radius: 8px
+
+.swiper-button-next,.swiper-button-prev
+	color: #FF4E00
+
+.swiper-pagination-bullet
+	background: #FF4E00
+	opacity: 0.25
+
+.swiper-pagination-bullet-active
+	background: #FF4E00
+	transform: scale(1.3)
+	opacity: 1
+
+.pagination
+	position: absolute
+	bottom: 5%	
+	width: calc( 100% - 70% )
+	margin: auto
+	right: 0
+	left: 0
+	z-index: 100
+
+.swiper-slide
+	display: flex
+
+.slide_left
+	width: 30%
+	height: 100%
+	border-right: 2px solid #CEB8A4
+	h3
+		text-align: center
+		margin-top: 16px
+		margin-bottom: 6px
+
+.slide_left_img
+	display: block
+	margin: 0 auto
+	margin-top: 10%
+	width: 170px
+	height: 170px
+
+.slide__description
+	ul
+		list-style-type: none
+		margin-left: -2%
+		li
+			font-size: 15px
+			font-weight: 500
+			line-height: 20px
+			margin-top: 10px
+			white-space: nowrap
+			display: flex
+			align-items: center
+			img
+				margin-right: 4%
+				width: 22px
+				height: auto	
+			span
+				color: #FF4E00
+				font-size: 1.1em
+				margin-left: 2%	
+
+.slide_right
+	height: 100%
+	width: 69%
+	display: flex
+	justify-content: center
+	align-items: center
+
+.slide_right__wrapper
+	width: 95%
+	height: 90%
+	font-size: 13px
+	blockquote
+		color: $accent
+		font-weight: 500
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+
+.text-center
+	text-align: center
+
+::selection
+	background-color: $accent
+	color: #fff
+
+@import "media" // Всегда в конце
